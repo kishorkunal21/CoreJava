@@ -1,0 +1,6 @@
+*.class
+*.iml
+*.settings
+*.idea
+*.project
+\target
