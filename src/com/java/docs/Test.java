@@ -1,4 +1,4 @@
-package com.docs.java;
+package com.java.docs;
 
 public class Test {
 

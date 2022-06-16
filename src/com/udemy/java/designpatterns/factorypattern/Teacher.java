@@ -1,4 +1,4 @@
-package com.java.designpatterns.factorypattern;
+package com.udemy.java.designpatterns.factorypattern;
 
 public class Teacher implements Profession {
 
