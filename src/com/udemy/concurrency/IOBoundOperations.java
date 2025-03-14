@@ -15,11 +15,13 @@ public class IOBoundOperations {
         System.out.printf("Running %d tasks\n", NUMBER_OF_TASKS);
 
         long start = System.currentTimeMillis();
-        performTask();
+        //implementing ThreadPerTaskModel
+        //threadPerTaskModel();
+        threadPerTaskModelIntensiveIO();
         System.out.println("Time taken to complete task : " + (System.currentTimeMillis() - start));
     }
 
-    private static void performTask() {
+    private static void threadPerTaskModel() {
         //use try with resources so that the main thread waits for all tasks to complete
 //        try (ExecutorService executorService = Executors.newCachedThreadPool()) {
 //            for (int i = 0; i < NUMBER_OF_TASKS; i++) {
@@ -31,6 +33,21 @@ public class IOBoundOperations {
         try (ExecutorService executorService = Executors.newFixedThreadPool(1000)) {
             for (int i = 0; i < NUMBER_OF_TASKS; i++) {
                 executorService.submit(() -> blockingIoOperation());
+            }
+        }
+
+    }
+
+    private static void threadPerTaskModelIntensiveIO(){
+
+        try (ExecutorService executorService = Executors.newFixedThreadPool(1000)) {
+            for (int i = 0; i < NUMBER_OF_TASKS; i++) {
+                executorService.submit(() ->
+                {
+                    for (int j = 0; j < 100; j++) {
+                        blockingIoOperation();
+                    }
+                });
             }
         }
     }
