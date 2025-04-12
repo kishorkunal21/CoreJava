@@ -12,9 +12,11 @@ public class ProductOfArrayExceptSelf {
         int[][] arr = {{2, 4, 0, 6},//[0,0,48,0]
                 {1, -3, 5, 7, 11}//[1155, -385, 231,165,-105]
         };
-        for (int[] i : arr) {
-            calculateNaiveApproach(i);
-        }
+        optimisedApproachCalculate(arr[1]);
+        /*for (int[] i : arr) {
+            //calculateNaiveApproach(i);
+            optimisedApproachCalculate(i);
+        }*/
 
     }
 
@@ -32,23 +34,31 @@ public class ProductOfArrayExceptSelf {
             result[i] = m;
         }
 
-        System.out.println("FINAL : "+Arrays.toString(result));
+        System.out.println("FINAL : " + Arrays.toString(result));
     }
 
     /*
     The idea is that we can break down the problem into two parts: the product of elements to the left of each index and the product of elements to the right of each index. By maintaining two separate running products as we traverse the array from both ends, we can accumulate the product values to populate the res array. This approach eliminates the need for repeated multiplications and effectively calculates the product except for the element at the current index. The Two Pointers pattern is employed here to handle both the left and right products in a single traversal
      */
-    private static void optimisedApproachCalculate(int[] arr){
+    private static void optimisedApproachCalculate(int[] arr) {
         int[] result = new int[arr.length];
         Arrays.fill(result, 1);
-        int left = 0,right=arr.length-1;
+        int left = 1, right = 1, p2 = arr.length - 1;
 
+        System.out.println("INPUT :: "+Arrays.toString(arr));
+        for (int i = 0; i < arr.length; i++) {
+            result[i] = result[i]*left;
+            result[p2] =  result[p2]*right;
+            System.out.printf("%s ::: p1=%d p2=%d left=%d right=%d\n",Arrays.toString(result),arr[i],arr[p2],left,right);
 
-        while (left<arr.length && right>-1){
+            left*=arr[i];
+            right*=arr[p2];
 
-            left++;
-            right--;
+            p2--;
+
         }
+        System.out.println(Arrays.toString(result));
+
     }
 
 }
