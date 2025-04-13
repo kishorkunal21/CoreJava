@@ -1,4 +1,4 @@
-package com.book.modernjavainaction.streams;
+package com.book.modernjavainaction.streams.chapter5;
 
 public class Dish {
     private final String name;

@@ -1,8 +1,5 @@
-package com.book.modernjavainaction.streams;
+package com.book.modernjavainaction.streams.chapter5;
 
-import com.educative.java8.streams.Streams;
-
-import java.awt.color.ICC_Profile;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -38,7 +35,64 @@ public class StreamOperations {
     public static void main(String[] args) {
         //filterOperations();
         //findingAndMatchingShortCircuitingOperations();
-        reducing();
+        //reducing();
+        //infiniteStreamsOperations();
+        //fibonaccciUsingStreams();
+        sorting();
+    }
+    private static void sorting(){
+        System.out.println(
+                Movie.getMovies().stream()
+                        .sorted((a,b)-> (int) (Math.max(a.rating(), b.rating())))
+                        .collect(Collectors.groupingBy(Movie::genre))
+
+        );
+    }
+
+    private static void fibonaccciUsingStreams() {
+        /*
+        The series of Fibonacci tuples is similar;
+        you have a sequence of a number and its successor in the series:
+        (0, 1), (1, 1), (1, 2), (2, 3), (3, 5), (5, 8), (8, 13), (13, 21)
+         */
+        System.out.println(
+                Stream.iterate(new int[]{0, 1},
+                                a -> new int[]{a[1], a[0] + a[1]}
+                        ).map(Arrays::toString)
+                        .limit(20)
+                        .toList()
+        );
+
+        System.out.println("------------------------------");
+        System.out.println(
+                Stream.iterate(new int[]{0,1},
+                                a->new int[]{a[1],a[0]+a[1]})//current and successor(current+prev)
+                        .map(p->p[0])
+                        .limit(10)
+                        .toList()
+        );
+
+
+    }
+
+
+    private static void infiniteStreamsOperations() {
+        Stream.iterate(0, a -> a + 2)
+                .limit(10)//can go in infinite loop if not set
+                .forEach(System.out::println);
+
+        System.out.println("------------------------------");
+        //using predicate in iterate
+        System.out.println(
+                Stream.iterate(0, a->a<100,a->a+1).toList()
+        );
+
+        System.out.println("------------------------------");
+        System.out.println(
+                Stream.generate(Math::random).limit(5)
+                        .toList()
+        );
+
     }
 
     private static void reducing() {
@@ -51,14 +105,14 @@ public class StreamOperations {
         System.out.println(
                 integerStream.stream().reduce(1, (a, b) -> a * b)
         );
-        System.out.println("reduce min : "+
-                integerStream.stream().reduce(1, (a, b) -> a < b?a:b)
+        System.out.println("reduce min : " +
+                integerStream.stream().reduce(1, (a, b) -> a < b ? a : b)
         );
-        System.out.println("stream count : "+integerStream.stream().count());
+        System.out.println("stream count : " + integerStream.stream().count());
 
-        System.out.println("Counting : "+
-                integerStream.stream().map(a->1).reduce(0,(a,b)->a+b)
-                );
+        System.out.println("Counting : " +
+                integerStream.stream().map(a -> 1).reduce(0, (a, b) -> a + b)
+        );
 
     }
 

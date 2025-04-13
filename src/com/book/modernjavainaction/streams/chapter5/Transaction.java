@@ -1,4 +1,4 @@
-package com.book.modernjavainaction.streams;
+package com.book.modernjavainaction.streams.chapter5;
 
 import java.util.Arrays;
 import java.util.List;

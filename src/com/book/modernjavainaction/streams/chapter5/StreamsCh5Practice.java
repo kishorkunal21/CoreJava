@@ -1,4 +1,6 @@
-package com.book.modernjavainaction.streams;
+package com.book.modernjavainaction.streams.chapter5;
+
+import java.util.Comparator;
 
 public class StreamsCh5Practice {
     /*
@@ -17,7 +19,9 @@ public class StreamsCh5Practice {
         System.out.println("---------------------------");
         System.out.println(
             Transaction.getTransactions().stream()
-                    .filter(t->t.year()==2011).toList()
+                    .filter(t->t.year()==2011)
+                    .sorted(Comparator.comparing(Transaction::value))
+                    .toList()
         );
 
         //What are all the unique cities where the traders work?
