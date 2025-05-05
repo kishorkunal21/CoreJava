@@ -1,4 +1,4 @@
-  # Core Java - Know it All, Do it All !
+  # Core Java | DS and Algo - Know it All, Do it All !
 
 This is a single repo for all my practice/exploration on Core Java, Data Structures & Algorithms and related topics.
 
