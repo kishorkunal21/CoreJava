@@ -38,8 +38,20 @@ public class StreamOperations {
         //reducing();
         //infiniteStreamsOperations();
         //fibonaccciUsingStreams();
-        sorting();
+        //sorting();
+
+mapCheck();
     }
+    private static void mapCheck(){
+        List<String> list = Arrays.asList("apple","cherry","banana","banana");
+        list.stream().map(m->m.split("")).flatMap(Arrays::stream).
+        
+                collect(Collectors.groupingBy(a->a.toLowerCase(),Collectors.counting()))
+                .forEach((k,v)-> System.out.println(k+" "+v));
+    }
+
+
+
     private static void sorting(){
         System.out.println(
                 Movie.getMovies().stream()
