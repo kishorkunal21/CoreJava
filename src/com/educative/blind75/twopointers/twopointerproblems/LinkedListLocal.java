@@ -3,6 +3,8 @@ package com.educative.blind75.twopointers.twopointerproblems;
 public class LinkedListLocal {
 
     Node head;
+    private static int SIZE = 0;
+    private static int LAST = 0;
 
     //inserting at the end
     public void insert(int value) {
@@ -16,16 +18,32 @@ public class LinkedListLocal {
             current = current.next;
         }
         current.next = newNode;
+        LAST = current.value;
+        SIZE++;
     }
 
-    public void print(){
-        if(head!=null){
+    public int peek() {
+        return head.value;
+    }
+
+    public int size() {
+        return SIZE;
+    }
+
+    public int tail() {
+        return LAST;
+    }
+
+    public String print() {
+        StringBuilder builder = new StringBuilder();
+        if (head != null) {
             Node current = head;
-            while(current.next!=null){
-                System.out.print(current.value+" ");
-                current=current.next;
+            while (current.next != null) {
+                builder.append(current.value).append(",");
+                current = current.next;
             }
         }
+        return !builder.isEmpty() ? builder.substring(0, builder.length() - 1) : "";
     }
 
 
