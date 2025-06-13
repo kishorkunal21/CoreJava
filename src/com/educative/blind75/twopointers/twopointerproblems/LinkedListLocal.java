@@ -3,8 +3,8 @@ package com.educative.blind75.twopointers.twopointerproblems;
 public class LinkedListLocal {
 
     Node head;
-    private static int SIZE = 0;
-    private static int LAST = 0;
+    private int size = 0;
+    private int last = 0;
 
     //inserting at the end
     public void insert(int value) {
@@ -18,8 +18,8 @@ public class LinkedListLocal {
             current = current.next;
         }
         current.next = newNode;
-        LAST = current.value;
-        SIZE++;
+        last = current.next.value;
+        size++;
     }
 
     public int insertAtLast(int value) {
@@ -30,8 +30,7 @@ public class LinkedListLocal {
                 current = current.next;
             }
             current.next=newNode;
-            System.out.println("Insert at last : "+print());
-            SIZE++;
+            size++;
             return current.next.value;
         }
         return -1;
@@ -42,9 +41,8 @@ public class LinkedListLocal {
         //first in first out
         if (head != null) {
             head = head.next;
-            SIZE--;
-            System.out.println("Removed : " + print());
-            return head.value;
+            size--;
+            return head!=null? head.value : -1;
         }
         return -1;
     }
@@ -52,12 +50,11 @@ public class LinkedListLocal {
     public int removeFromLast() {
         if (head != null) {
             Node current = head;
-            for (int i = 0; i < SIZE - 1; i++) {
+            for (int i = 0; i < size - 1; i++) {
                 current = current.next;
             }
             current.next=null;
-            System.out.println("Removed from last : "+print());
-            SIZE--;
+            size--;
             return current.value;
         }
         return -1;
@@ -68,15 +65,16 @@ public class LinkedListLocal {
     }
 
     public int size() {
-        return SIZE;
+        return size;
     }
 
     public int tail() {
-        return LAST;
+        return last;
     }
 
     public String print() {
         StringBuilder builder = new StringBuilder();
+        builder.append("[");
         if (head != null) {
             Node current = head;
             while (current.next != null) {
@@ -85,6 +83,7 @@ public class LinkedListLocal {
             }
             builder.append(current.value);
         }
+        builder.append("]");
         return builder.toString();
     }
 
