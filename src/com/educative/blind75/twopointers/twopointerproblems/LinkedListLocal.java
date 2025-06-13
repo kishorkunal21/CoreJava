@@ -22,6 +22,47 @@ public class LinkedListLocal {
         SIZE++;
     }
 
+    public int insertAtLast(int value) {
+        Node newNode = new Node(value);
+        if (head != null) {
+            Node current = head;
+            while (current.next!=null){
+                current = current.next;
+            }
+            current.next=newNode;
+            System.out.println("Insert at last : "+print());
+            SIZE++;
+            return current.next.value;
+        }
+        return -1;
+    }
+
+
+    public int remove() {
+        //first in first out
+        if (head != null) {
+            head = head.next;
+            SIZE--;
+            System.out.println("Removed : " + print());
+            return head.value;
+        }
+        return -1;
+    }
+
+    public int removeFromLast() {
+        if (head != null) {
+            Node current = head;
+            for (int i = 0; i < SIZE - 1; i++) {
+                current = current.next;
+            }
+            current.next=null;
+            System.out.println("Removed from last : "+print());
+            SIZE--;
+            return current.value;
+        }
+        return -1;
+    }
+
     public int peek() {
         return head.value;
     }
@@ -42,8 +83,9 @@ public class LinkedListLocal {
                 builder.append(current.value).append(",");
                 current = current.next;
             }
+            builder.append(current.value);
         }
-        return !builder.isEmpty() ? builder.substring(0, builder.length() - 1) : "";
+        return builder.toString();
     }
 
 
