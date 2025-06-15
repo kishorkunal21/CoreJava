@@ -1,4 +1,4 @@
-package com.educative.blind75.twopointerproblems;
+package com.educative.blind75.twopointers.twopointerproblems;
 
 public class Palindrome {
     public static void main(String[] args) {

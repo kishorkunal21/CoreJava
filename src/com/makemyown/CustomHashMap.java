@@ -1,10 +1,7 @@
-package com.mademyown;
+package com.makemyown;
 
-import javax.sound.midi.SoundbankResource;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
-import java.util.concurrent.CopyOnWriteArrayList;
 
 public class CustomHashMap {
 

@@ -1,4 +1,4 @@
-package com.mademyown;
+package com.makemyown;
 
 
 import java.util.List;

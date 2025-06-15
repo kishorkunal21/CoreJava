@@ -1,4 +1,4 @@
-package com.educative.blind75.twopointerproblems;
+package com.educative.blind75.twopointers.twopointerproblems;
 
 //Given an integer array nums, find and return all unique triplets
 // [nums[i], nums[j], nums[k]], where the indexes satisfy

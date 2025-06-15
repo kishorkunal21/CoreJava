@@ -1,4 +1,4 @@
-package com.educative.blind75.twopointerproblems;
+package com.educative.blind75.twopointers.twopointerproblems;
 
 import java.util.Arrays;
 

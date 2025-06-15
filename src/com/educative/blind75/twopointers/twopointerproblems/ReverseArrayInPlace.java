@@ -1,6 +1,4 @@
-package com.educative.blind75.twopointerproblems;
-
-import com.codewithmosh.algorthm.Array;
+package com.educative.blind75.twopointers.twopointerproblems;
 
 import java.util.Arrays;
 

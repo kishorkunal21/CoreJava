@@ -1,6 +1,5 @@
-package com.mademyown;
+package com.makemyown;
 
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
