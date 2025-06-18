@@ -11,6 +11,7 @@ public class LinkedListLocal {
         Node newNode = new Node(value);
         if (head == null) {
             head = newNode;
+            size++;
             return;
         }
         Node current = head;
@@ -50,7 +51,7 @@ public class LinkedListLocal {
     public int removeFromLast() {
         if (head != null) {
             Node current = head;
-            for (int i = 0; i < size - 1; i++) {
+            for (int i = 0; i < size - 2; i++) {
                 current = current.next;
             }
             current.next=null;
