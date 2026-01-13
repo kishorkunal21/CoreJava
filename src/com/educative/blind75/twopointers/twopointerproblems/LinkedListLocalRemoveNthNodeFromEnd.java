@@ -4,7 +4,7 @@ public class LinkedListLocalRemoveNthNodeFromEnd {
     public static void main(String[] args) {
 
     }
-
+//todo implement
     Node getHead() {
         return head;
     }
