@@ -23,23 +23,20 @@ public class NonConstructableChange {
     static int nonConstructableChange(int[] coins) {
         int min = 0;
         // logic : if the new entry is > sum +1 ; change is not possible
-        List<Integer> minList = new ArrayList<>();
+        // O(n) time and O(1) space
+        Arrays.sort(coins);
+        System.out.println("sorted : " + Arrays.toString(coins));
 
-
-        if (coins.length > 1) {
-            Arrays.sort(coins);
-            System.out.println("sorted : " + Arrays.toString(coins));
-
-            for (int coin : coins) {
-                if (coin > (min + 1)) {
-                    System.out.println("output : " + (min + 1));
-                    return min + 1;
-                } else {
-                    min = min + coin;
-                    System.out.println("coin : " + coin + "sum : " + min);
-                }
+        for (int coin : coins) {
+            if (coin > (min + 1)) {
+                System.out.println("returning : " + (min + 1));
+                return min + 1;
+            } else {
+                min = min + coin;
+                System.out.println("coin : " + coin + "sum : " + min);
             }
         }
-        return 1;
+
+        return min+1;
     }
 }
